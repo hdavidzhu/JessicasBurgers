@@ -8,17 +8,21 @@ var exphbs  = require('express-handlebars');
 var app = express();
 var favicon = require('serve-favicon');
 
-var burgerRouter = require('routes/burger-router.js');
+var burgerRouter = require('./routes/burger-router.js');
 
 // Template engine.
-app.engine('handlebars', exphbs({defaultLayout: 'main'}));
-app.set('view engine', 'handlebars');
+app.engine('.hbs', exphbs({
+	extname: '.hbs',
+	defaultLayout: 'layout'
+}));
+
+app.set('view engine', '.hbs');
 
 // Set our port
 var port = process.env.PORT || 3000; 
 
 // Mongoose instance and connection to our mongolab database.
-// var db = require('./db');
+var db = require('./db');
 
 // Middleware.
 app.use(logger('dev'));
@@ -29,10 +33,12 @@ app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routing.
-app.get('/', burgerRouter.home);
-app.get('/ingredients', burgerRouter.ingredients);
-app.get('/order', burgerRouter.order);
-app.get('/kitchen', burgerRouter.kitchen);
+app.get('/', burgerRouter.getHome);
+app.get('/ingredients', burgerRouter.getIngredients);
+app.post('/ingredients', burgerRouter.postIngredients);
+app.post('/toggle-ingredient', burgerRouter.toggleIngredient);
 
+app.get('/order', burgerRouter.getOrder);
+app.get('/kitchen', burgerRouter.getKitchen);
 
 app.listen(port);

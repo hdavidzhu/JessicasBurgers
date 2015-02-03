@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/hdavidzhu/JessicasBurgers/issues"
   },
-  "homepage": "https://github.com/hdavidzhu/JessicasBurgers"
+  "homepage": "https://github.com/hdavidzhu/JessicasBurgers",
+  "devDependencies": {
+    "handlebars-helpers": "^0.5.8"
+  }
 }
