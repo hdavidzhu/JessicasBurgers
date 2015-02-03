@@ -1,0 +1,24 @@
+Hello I'm an order!
+
+{{#each ingredients }}
+<div class="ingredient">
+
+	<div class="ingredient-name">{{ name }}</div>
+	<div>{{ price }}</div>
+
+	<button class="toggle-stock {{ id }}" type="button">
+		{{#if instock }}
+			Out of stock.
+		{{else}}
+			Restock.
+		{{/if}}
+	</button>
+
+	<button class="edit-ingredient {{ id }} {{ name }} {{ price }}" type="button">
+		Edit
+	</button>
+	
+</div>
+{{/each }}
+
+<script type="text/javascript" src="javascripts/csOrderPage.js"></script>

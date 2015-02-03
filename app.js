@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Routing.
 app.get('/', burgerRouter.getHome);
+
 app.get('/ingredients', burgerRouter.getIngredients);
 app.post('/ingredients', burgerRouter.postIngredients);
 app.post('/toggle-ingredient', burgerRouter.toggleIngredient);

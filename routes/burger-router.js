@@ -13,6 +13,17 @@ var sendIngredients = function (res) {
 		});
 }
 
+var sendOrderIngredients = function (res) {
+	Ingredient.find()
+		.sort({name: 1})
+		.exec(function (err, ingredients) {
+			res.render("partials/ingredient-order-list", {
+				layout: false,
+				ingredients: ingredients
+			})
+		});
+}
+
 var saveIngredient = function (res, newIngredient) {
 	newIngredient.save(function (err) {
 		if (err) console.log("Error: " + err);
@@ -67,7 +78,14 @@ module.exports = {
 	},
 
 	getOrder: function (req, res){
-		res.send("Welcome to orders!");
+
+		// Check if the request is AJAX.
+		var is_ajax_request = req.xhr;
+		if (is_ajax_request) {
+			sendOrderIngredients(res);
+		} else {
+			res.render("order-page");
+		}
 	},
 
 	getKitchen: function (req, res){
