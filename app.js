@@ -39,6 +39,9 @@ app.post('/ingredients', burgerRouter.postIngredients);
 app.post('/toggle-ingredient', burgerRouter.toggleIngredient);
 
 app.get('/order', burgerRouter.getOrder);
+app.post('/order', burgerRouter.postOrder);
+
 app.get('/kitchen', burgerRouter.getKitchen);
+app.post('/kitchen', burgerRouter.deleteOrder);
 
 app.listen(port);

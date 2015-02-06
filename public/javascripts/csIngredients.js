@@ -14,13 +14,16 @@ $(function() {
 
 $postIngredient.submit(function(event) {
   event.preventDefault();
-  var name = $postIngredient.find("[name='name']").val();
-  var price = $postIngredient.find("[name='price']").val();
-  $.post("ingredients", {
-    name: name,
-    price: price,
-    instock: true
-  })
-    .done(onSuccess)
-    .error(onError);
+
+  if($("#input-name").val() === "" || $.isNumeric($("#input-price").val()) === false) {
+    alert("Ingredient not valid! Please complete description.");
+  } else {
+    var name = $postIngredient.find("[name='name']").val();
+    var price = $postIngredient.find("[name='price']").val();
+    $.post("ingredients", {
+      name: name,
+      price: price,
+      instock: true
+    }).done(onSuccess).error(onError);
+  }  
 });

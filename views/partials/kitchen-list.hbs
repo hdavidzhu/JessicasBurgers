@@ -1,0 +1,10 @@
+{{#each orders }}
+	<div>{{ personName }}</div>
+	{{#each orderItems}}
+		<div>{{ name }}</div>
+	{{/each}}
+
+	<button id="{{ id }}" type="button">Completed</button>
+{{/each }}
+
+<script type="text/javascript" src="javascripts/csKitchenList.js"></script>
