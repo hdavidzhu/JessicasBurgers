@@ -38,10 +38,22 @@ $(".edit-ingredient").click(function(event){
 	var itemName = $(event.target).attr('name');
 	var itemPrice = $(event.target).attr('price');
 
+
   // Then collect information from the prompt.
 	var editedInfo = getEdits(itemName, itemPrice);
 	var newName = editedInfo[0];
 	var newPrice = editedInfo[1];
+
+  console.log(newName);
+  console.log(newPrice);
+  console.log(newName || newPrice);
+
+  if (newName === null) {
+    if (newPrice === null) {
+      console.log("Oh shit.");
+      return; //break out of the function early
+    }
+  }
 
   // Send updated ingredient information back to the server.
   event.preventDefault();
