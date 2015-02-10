@@ -5,6 +5,7 @@ var Schema = mongoose.Schema;
 
 var OrderSchema = new Schema({
 	personName: String,
+	// We can also embed Ingredients into the order for simplicity.
 	orderItems: [IngredientSchema]
 });
 

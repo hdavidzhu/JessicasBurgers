@@ -67,7 +67,7 @@ var saveOrder = function (res, personName, orderItems) {
 module.exports = {
 	
 	getHome: function (req, res){
-		res.send("Welcome home!");
+		res.render("base");
 	},
 
 	getIngredients: function (req, res){
@@ -100,6 +100,7 @@ module.exports = {
 		});
 	},
 
+	// Change the state of the ingredient from being in and out of stock.
 	toggleIngredient: function (req, res){
 		Ingredient.findOne({ _id: req.body.id }, function (err, ingredient){
 			if (err) console.log("Error: " + err);

@@ -33,18 +33,17 @@ var onError = function(data, status) {
 // Post the changed infromation to the server and update the database.
 $(".edit-ingredient").click(function(event){
 
-  
+  // Collect the information needed for an edit.
+	var idClicked = $(event.target).attr('id');
+	var itemName = $(event.target).attr('name');
+	var itemPrice = $(event.target).attr('price');
 
-  
-	var classes = $(event.target).attr('class').split(/\s+/);
-	var idClicked = classes[1];
-	var itemName = classes [2];
-	var itemPrice = classes [3];
-
+  // Then collect information from the prompt.
 	var editedInfo = getEdits(itemName, itemPrice);
 	var newName = editedInfo[0];
 	var newPrice = editedInfo[1];
 
+  // Send updated ingredient information back to the server.
   event.preventDefault();
   $.post("ingredients", {
   	id: idClicked,
@@ -57,4 +56,5 @@ $(".edit-ingredient").click(function(event){
   	.error(onError);
 });
 
+// Format money into currency.
 $(".money").currency();

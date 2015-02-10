@@ -1,3 +1,5 @@
+// Not my script. I'm just using it for basic money formatting.
+
 /*
  * jQuery Currency v0.6 ( January 2015 )
  * Simple, unobtrusive currency converting and formatting

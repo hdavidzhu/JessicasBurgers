@@ -8,10 +8,12 @@ var onError = function(data, status) {
   $("#ingredient_list").html("Error world!");
 };
 
+// After the page loads, send an AJAX get request to collect the list of ingredients.
 $(function() {
   $.get("ingredients").done(onSuccess).error(onError);
 });
 
+// Create a new ingredient and update it.
 $postIngredient.submit(function(event) {
   event.preventDefault();
 

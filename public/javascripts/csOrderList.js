@@ -1,3 +1,4 @@
+// Computes the total amount of money of the selected order.
 $(':checkbox').on( "click", function() {
 	var total_price = 0;
 	$(':checkbox:checked').each(function () {
